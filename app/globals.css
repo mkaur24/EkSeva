@@ -1,0 +1,487 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f8f7f4;
+  --bg-strong: #ffffff;
+  --fg: #121212;
+  --muted: #5f6368;
+  --line: rgba(18, 18, 18, 0.12);
+  --line-strong: rgba(18, 18, 18, 0.18);
+  --accent: #3f5a4a;
+  --accent-ink: #eef2ee;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at 8% -10%, rgba(89, 111, 97, 0.08), transparent 48%),
+    radial-gradient(circle at 100% 10%, rgba(196, 177, 143, 0.12), transparent 40%),
+    var(--bg);
+  color: var(--fg);
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Text",
+    "SF Pro Display",
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: rgba(63, 90, 74, 0.14);
+}
+
+.site-shell {
+  min-height: 100vh;
+}
+
+.container-shell {
+  width: min(1120px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .container-shell {
+    width: min(1120px, calc(100% - 3rem));
+  }
+}
+
+.section-pad {
+  padding-block: clamp(4.5rem, 7vw, 8.5rem);
+}
+
+.hairline {
+  border-top: 1px solid var(--line);
+}
+
+.surface-card {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid var(--line);
+  box-shadow: 0 14px 42px rgba(17, 17, 17, 0.06), 0 2px 8px rgba(17, 17, 17, 0.04);
+  backdrop-filter: blur(10px);
+}
+
+.focus-ring {
+  outline: none;
+}
+
+.focus-ring:focus-visible {
+  box-shadow: 0 0 0 3px rgba(63, 90, 74, 0.18), 0 0 0 1px rgba(63, 90, 74, 0.45);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 600ms ease,
+    transform 600ms ease;
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-grid {
+  background:
+    radial-gradient(circle at 18% 18%, rgba(63, 90, 74, 0.1), transparent 52%),
+    radial-gradient(circle at 82% 14%, rgba(196, 177, 143, 0.2), transparent 44%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.94));
+}
+
+.hero-logo-watermark {
+  position: absolute;
+  right: clamp(-1.25rem, -1vw, -0.5rem);
+  top: clamp(0.75rem, 2vw, 1.5rem);
+  width: min(42vw, 420px);
+  aspect-ratio: 1 / 1;
+  pointer-events: none;
+  opacity: 0.18;
+  background-image: url("/ekseva-logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  filter: saturate(1) contrast(1);
+}
+
+.hero-logo-badge {
+  width: 54px;
+  height: 54px;
+  flex: 0 0 auto;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background-color: rgba(255, 255, 255, 0.9);
+  background-image: url("/ekseva-logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 82%;
+  box-shadow: 0 6px 18px rgba(17, 17, 17, 0.06);
+}
+
+.nav-logo-mark {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background-color: rgba(255, 255, 255, 0.92);
+  background-image: url("/ekseva-logo.png");
+  background-repeat: no-repeat;
+  background-position: center 28%;
+  background-size: 158%;
+  box-shadow: 0 4px 12px rgba(17, 17, 17, 0.05);
+}
+
+@media (max-width: 767px) {
+  .hero-logo-watermark {
+    display: none;
+  }
+}
+
+.grain-lines {
+  position: absolute;
+  inset: auto 0 0 auto;
+  width: min(52vw, 520px);
+  height: min(36vw, 320px);
+  pointer-events: none;
+  opacity: 0.28;
+  background:
+    repeating-radial-gradient(
+      ellipse at 85% 70%,
+      rgba(196, 145, 84, 0.24) 0 2px,
+      transparent 2px 18px
+    );
+  mask-image: radial-gradient(circle at 85% 75%, black 30%, transparent 78%);
+}
+
+.screen-block {
+  min-height: min(82vh, 760px);
+  display: grid;
+  align-items: center;
+}
+
+.micro-story-svg {
+  aspect-ratio: 64 / 42;
+}
+
+.story-stage {
+  opacity: 0.18;
+}
+
+.stage-grow {
+  opacity: 1;
+}
+
+.wheat {
+  transform-origin: center bottom;
+}
+
+.sun-rise {
+  transform-origin: 500px 120px;
+}
+
+.mill-rotate {
+  transform-origin: 320px 220px;
+}
+
+.mill-rotate.inverse {
+  animation-direction: reverse;
+}
+
+.kitchen-scan {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .story-orbit {
+    animation: orbitDrift 9s ease-in-out infinite;
+  }
+
+  .story-stage.stage-grow {
+    animation: storyStageGrow 9s ease-in-out infinite;
+  }
+
+  .story-stage.stage-mill {
+    animation: storyStageMill 9s ease-in-out infinite;
+  }
+
+  .story-stage.stage-kitchen {
+    animation: storyStageKitchen 9s ease-in-out infinite;
+  }
+
+  .wheat-a {
+    animation: wheatSway 4.2s ease-in-out infinite;
+  }
+
+  .wheat-b {
+    animation: wheatSway 4s ease-in-out infinite 120ms;
+  }
+
+  .wheat-c {
+    animation: wheatSway 4.4s ease-in-out infinite 60ms;
+  }
+
+  .sun-rise {
+    animation: sunPulse 9s ease-in-out infinite;
+  }
+
+  .mill-rotate {
+    animation: millSpin 8.5s linear infinite;
+  }
+
+  .grain-pulse {
+    animation: grainPulse 9s ease-in-out infinite;
+  }
+
+  .kitchen-grid {
+    animation: kitchenGridPulse 9s ease-in-out infinite;
+  }
+
+  .kitchen-scan {
+    animation: kitchenScan 9s ease-in-out infinite;
+  }
+
+  .kitchen-points {
+    animation: kitchenPoints 9s ease-in-out infinite;
+  }
+
+  .dot-1 {
+    animation: dotPulse1 9s ease-in-out infinite;
+  }
+
+  .dot-2 {
+    animation: dotPulse2 9s ease-in-out infinite;
+  }
+
+  .dot-3 {
+    animation: dotPulse3 9s ease-in-out infinite;
+  }
+}
+
+@keyframes storyStageGrow {
+  0%, 29% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  34%, 100% {
+    opacity: 0.12;
+    transform: translateY(2px);
+  }
+}
+
+@keyframes storyStageMill {
+  0%, 28% {
+    opacity: 0.08;
+    transform: translateY(6px);
+  }
+  34%, 62% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  68%, 100% {
+    opacity: 0.1;
+    transform: translateY(4px);
+  }
+}
+
+@keyframes storyStageKitchen {
+  0%, 58% {
+    opacity: 0.08;
+    transform: translateY(6px);
+  }
+  64%, 95% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0.3;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wheatSway {
+  0%, 100% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(1.8deg);
+  }
+}
+
+@keyframes sunPulse {
+  0%, 100% {
+    transform: scale(0.98);
+    opacity: 0.78;
+  }
+  18%, 28% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+  40% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes millSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes grainPulse {
+  0%, 30%, 100% {
+    opacity: 0.18;
+    transform: translateX(-4px);
+  }
+  38%, 58% {
+    opacity: 1;
+    transform: translateX(2px);
+  }
+}
+
+@keyframes kitchenScan {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  68% {
+    transform: translateY(6px);
+    opacity: 0.8;
+  }
+  84% {
+    transform: translateY(108px);
+    opacity: 0.45;
+  }
+}
+
+@keyframes kitchenGridPulse {
+  0%, 60%, 100% {
+    opacity: 0.45;
+  }
+  70%, 90% {
+    opacity: 1;
+  }
+}
+
+@keyframes kitchenPoints {
+  0%, 60%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  74% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+  88% {
+    opacity: 0.7;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes orbitDrift {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes dotPulse1 {
+  0%, 100% {
+    fill: rgba(18, 18, 18, 0.22);
+  }
+  8%, 28% {
+    fill: rgba(63, 90, 74, 0.55);
+  }
+}
+
+@keyframes dotPulse2 {
+  0%, 100% {
+    fill: rgba(18, 18, 18, 0.22);
+  }
+  38%, 62% {
+    fill: rgba(63, 90, 74, 0.55);
+  }
+}
+
+@keyframes dotPulse3 {
+  0%, 100% {
+    fill: rgba(18, 18, 18, 0.22);
+  }
+  68%, 92% {
+    fill: rgba(63, 90, 74, 0.55);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero-logo-watermark {
+    opacity: 0.12;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .story-stage,
+  .story-orbit,
+  .wheat,
+  .sun-rise,
+  .mill-rotate,
+  .grain-pulse,
+  .kitchen-grid,
+  .kitchen-scan,
+  .kitchen-points,
+  .story-dots .dot {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .story-stage {
+    opacity: 0.22;
+  }
+
+  .stage-grow {
+    opacity: 1;
+  }
+
+  .stage-mill,
+  .stage-kitchen {
+    opacity: 0.48;
+  }
+}
