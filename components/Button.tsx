@@ -20,11 +20,11 @@ export function Button({
   rel
 }: ButtonProps) {
   const base =
-    "focus-ring inline-flex items-center justify-center rounded-full text-sm font-medium tracking-tight transition hover:-translate-y-0.5";
+    "focus-ring inline-flex min-h-11 items-center justify-center rounded-2xl text-sm font-semibold tracking-tight transition duration-200";
   const styles =
     variant === "primary"
-      ? "border border-[rgba(18,18,18,0.08)] bg-accent px-5 py-3 text-[color:var(--accent-ink)] shadow-soft hover:bg-[#364d40]"
-      : "px-1 py-1 text-ink/80 hover:text-ink";
+      ? "border border-[rgba(18,18,18,0.12)] bg-[linear-gradient(180deg,#4f6c5a_0%,#3f5a4a_100%)] px-6 py-3 text-[#f5f8f5] shadow-[0_10px_24px_rgba(63,90,74,0.22),inset_0_1px_0_rgba(255,255,255,0.22)] hover:-translate-y-0.5 hover:shadow-[0_14px_28px_rgba(63,90,74,0.26),inset_0_1px_0_rgba(255,255,255,0.25)] active:translate-y-0"
+      : "rounded-xl px-2 py-1.5 text-ink/80 hover:text-ink";
 
   if (href.startsWith("/")) {
     return (

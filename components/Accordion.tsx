@@ -4,7 +4,7 @@ import { useId, useState } from "react";
 
 export type AccordionItem = {
   title: string;
-  content: string[];
+  content: React.ReactNode[];
 };
 
 type AccordionProps = {
@@ -56,8 +56,8 @@ export function Accordion({ items, className = "" }: AccordionProps) {
               <div className="overflow-hidden">
                 <div className="px-5 pb-5 md:px-6 md:pb-6">
                   <div className="border-t border-line pt-4 text-sm leading-7 text-mute md:text-base">
-                    {item.content.map((paragraph) => (
-                      <p key={paragraph} className="mb-3 last:mb-0">
+                    {item.content.map((paragraph, index) => (
+                      <p key={index} className="mb-3 last:mb-0">
                         {paragraph}
                       </p>
                     ))}

@@ -124,6 +124,11 @@ a {
   filter: saturate(1) contrast(1);
 }
 
+.about-hero .hero-logo-watermark {
+  top: clamp(0rem, 1vw, 0.75rem);
+  background-position: center 24%;
+}
+
 .hero-logo-badge {
   width: 54px;
   height: 54px;
@@ -142,14 +147,35 @@ a {
   width: 28px;
   height: 28px;
   flex: 0 0 auto;
-  border-radius: 8px;
+  border-radius: 0;
   border: 1px solid var(--line);
   background-color: rgba(255, 255, 255, 0.92);
   background-image: url("/ekseva-logo.png");
   background-repeat: no-repeat;
-  background-position: center 28%;
-  background-size: 158%;
+  background-position: center;
+  background-size: cover;
   box-shadow: 0 4px 12px rgba(17, 17, 17, 0.05);
+}
+
+.movement-break {
+  position: relative;
+  padding-block: 0.25rem;
+}
+
+.movement-break::before,
+.movement-break::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(18, 18, 18, 0.2), transparent);
+}
+
+.movement-break::before {
+  margin-bottom: 1rem;
+}
+
+.movement-break::after {
+  margin-top: 1rem;
 }
 
 @media (max-width: 767px) {
@@ -435,6 +461,11 @@ a {
   68%, 92% {
     fill: rgba(63, 90, 74, 0.55);
   }
+}
+
+.emoji-toned {
+  filter: grayscale(0.45) saturate(0.7) contrast(1.05);
+  opacity: 0.95;
 }
 
 @media (prefers-reduced-motion: reduce) {

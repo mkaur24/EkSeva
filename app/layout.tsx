@@ -10,6 +10,11 @@ export const metadata: Metadata = {
   },
   description:
     "EkSeva® is a values-led food brand focused on thoughtful sourcing and long-term care for community kitchens and households.",
+  icons: {
+    icon: [{ url: "/ekseva-logo.png", type: "image/png" }],
+    shortcut: ["/ekseva-logo.png"],
+    apple: [{ url: "/ekseva-logo.png", type: "image/png" }]
+  },
   openGraph: {
     title: "EkSeva®",
     description:

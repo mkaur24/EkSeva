@@ -5,16 +5,13 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/Button";
 
-const homeLinks = [
-  { label: "Principle", href: "#principle" },
-  { label: "Difference", href: "#difference" },
-  { label: "Products", href: "#products" },
-  { label: "Connect", href: "#connect" }
+const primaryLinks = [
+  { label: "About us", href: "/#about" },
+  { label: "Impact", href: "/#impact" },
+  { label: "Products", href: "/#products" },
+  { label: "Join the Movement", href: "/#join" },
+  { label: "Contact", href: "/#contact" }
 ];
-
-function toHomeAwareHref(pathname: string, href: string) {
-  return pathname === "/" ? href : `/${href}`;
-}
 
 export function Nav() {
   const pathname = usePathname();
@@ -33,7 +30,7 @@ export function Nav() {
     return () => window.removeEventListener("keydown", closeOnEscape);
   }, [open]);
 
-  const ctaHref = toHomeAwareHref(pathname, "#products");
+  const ctaHref = "/#join";
 
   return (
     <header className="sticky top-0 z-50 border-b border-line/70 bg-[rgba(248,247,244,0.82)] backdrop-blur-xl">
@@ -51,27 +48,19 @@ export function Nav() {
         </Link>
 
         <nav aria-label="Primary" className="hidden items-center gap-6 md:flex">
-          {homeLinks.map((link) => (
+          {primaryLinks.map((link) => (
             <Link
               key={link.label}
-              href={toHomeAwareHref(pathname, link.href)}
+              href={link.href}
               className="focus-ring text-sm tracking-tight text-mute transition hover:text-ink"
             >
               {link.label}
             </Link>
           ))}
-          <Link
-            href="/why"
-            className={`focus-ring text-sm tracking-tight transition hover:text-ink ${
-              pathname === "/why" ? "text-ink" : "text-mute"
-            }`}
-          >
-            Why EkSeva
-          </Link>
         </nav>
 
         <div className="hidden md:block">
-          <Button href={ctaHref}>Explore EkSeva</Button>
+          <Button href={ctaHref}>Sponsor now</Button>
         </div>
 
         <button
@@ -112,26 +101,19 @@ export function Nav() {
       >
         <nav aria-label="Mobile" className="container-shell py-4">
           <div className="grid gap-2">
-            {homeLinks.map((link) => (
+            {primaryLinks.map((link) => (
               <Link
                 key={link.label}
-                href={toHomeAwareHref(pathname, link.href)}
+                href={link.href}
                 onClick={() => setOpen(false)}
                 className="focus-ring rounded-2xl border border-transparent px-4 py-3 text-base tracking-tight text-ink hover:border-line hover:bg-white/70"
               >
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/why"
-              onClick={() => setOpen(false)}
-              className="focus-ring rounded-2xl border border-transparent px-4 py-3 text-base tracking-tight text-ink hover:border-line hover:bg-white/70"
-            >
-              Why EkSeva
-            </Link>
             <div className="pt-2">
               <Button href={ctaHref} className="w-full" onClick={() => setOpen(false)}>
-                Explore EkSeva
+                Sponsor now
               </Button>
             </div>
           </div>
